@@ -6,11 +6,13 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { setCarDetails } from '../../ducks/carDetails';
 import { getTicket } from '../../utils/parkingLot';
+import { calculatePrice } from '../../utils/parkingLot';
 
 const HomePage = ({ actionSetCarDetails }) =>{
 	const submitHandler = () => {
         const getTicketDetails = getTicket();
-        actionSetCarDetails(getTicketDetails);
+        const updatePriceDetails = calculatePrice(getTicketDetails);
+        actionSetCarDetails(updatePriceDetails);
 	}
 
     return (
